@@ -3,6 +3,8 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
 import { Link, NavLink } from 'react-router-dom'
 
+import { Logo } from './Logo'
+
 const navigation = [
   { name: 'framer-motion', to: '/framer-motion', current: false },
   { name: 'react-motion', to: '/react-motion', current: false },
@@ -30,7 +32,9 @@ export const Nav = () => (
             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex-shrink-0 flex items-center">
                 <span className="block w-auto text-white font-medium">
-                  <Link to="/">Animations galore</Link>
+                  <Link to="/">
+                    <Logo />
+                  </Link>
                 </span>
               </div>
               <div className="hidden sm:block sm:ml-6">
