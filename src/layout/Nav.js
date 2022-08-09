@@ -4,13 +4,7 @@ import classNames from 'classnames'
 import { Link, NavLink } from 'react-router-dom'
 
 import { Logo } from './Logo'
-
-const navigation = [
-  { name: 'framer-motion', to: '/framer-motion', current: false },
-  { name: 'react-motion', to: '/react-motion', current: false },
-  { name: 'react-spring', to: '/react-spring', current: false },
-  { name: 'reanimated', to: '/reanimated', current: false },
-]
+import { navRoutes } from './navRoutes'
 
 export const Nav = () => (
   <Disclosure as="nav" className="bg-gray-800">
@@ -39,7 +33,7 @@ export const Nav = () => (
               </div>
               <div className="hidden sm:block sm:ml-6">
                 <div className="flex space-x-4">
-                  {navigation.map((item) => (
+                  {navRoutes.map((item) => (
                     <NavLink
                       key={item.to}
                       to={item.to}
@@ -63,7 +57,7 @@ export const Nav = () => (
 
         <Disclosure.Panel className="sm:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            {navigation.map((item) => (
+            {navRoutes.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
