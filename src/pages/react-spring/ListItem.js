@@ -2,7 +2,7 @@ import { useCallback, useRef } from 'react'
 import { animated, useSpring } from 'react-spring'
 
 export const ListItem = ({ car }) => {
-  const [styles, api] = useSpring(() => ({
+  const [openStyles, openApi] = useSpring(() => ({
     immediate: true,
     from: { width: '300px', height: '87px' },
   }))
@@ -27,23 +27,30 @@ export const ListItem = ({ car }) => {
 
   const [deleteStyles, deleteApi] = useSpring(() => ({
     immediate: true,
-    from: { x: 1 },
+    from: { x: 1, y: 1 },
   }))
 
   const handleDelete = useCallback(() => {
     deleteApi.start(() => ({
-      from: { x: 1 },
-      to: { x: 0 },
+      from: { x: 1, y: 1 },
+      to: [
+        { x: 0, y: 1 },
+        { x: 0, y: 0 },
+      ],
       immediate: false,
     }))
   }, [deleteApi])
 
+  // console.log(`deleteStyles.x: `, deleteStyles.x.to)
+  // console.log(`deleteStyles.y: `, deleteStyles.y.to)
   return (
     <animated.div
       className="bg-white shadow overflow-hidden sm:rounded-lg mb-4"
       style={{
         ...openStyles,
-        transform: deleteStyles.x.to((x) => `scale(${x}, 1)`),
+        transform: deleteStyles.x.to(
+          (x) => `scale(${x}, ${deleteStyles.y.to((y) => y)})`
+        ),
         transformOrigin: 'left',
       }}
     >
