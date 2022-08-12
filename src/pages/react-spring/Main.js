@@ -1,3 +1,5 @@
+import Loader from './Loader'
+
 export const Main = () => {
-  return <div>React spring</div>
+  return <Loader />
 }
