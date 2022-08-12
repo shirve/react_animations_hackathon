@@ -1,3 +1,5 @@
+import { List } from './List'
+
 export const Main = () => {
-  return <div>React spring</div>
+  return <List />
 }
