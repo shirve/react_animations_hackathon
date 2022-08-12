@@ -8,7 +8,7 @@ export const ListItem = ({ car }) => {
   }))
   const isOpen = useRef(false)
 
-  const click = useCallback(() => {
+  const handleOpen = useCallback(() => {
     const order = isOpen.current
       ? {
           from: { width: '1216px', height: '538px' },
@@ -27,15 +27,35 @@ export const ListItem = ({ car }) => {
 
   return (
     <animated.div
-      onClick={click}
       className="bg-white shadow overflow-hidden sm:rounded-lg mb-4"
       style={styles}
     >
-      <div className="px-4 py-5 sm:px-6">
-        <h3 className="text-lg leading-6 font-medium text-gray-900">
-          {car.name}
-        </h3>
-        <p className="mt-1 max-w-2xl text-sm text-gray-500">{car.short}</p>
+      <div className="px-4 py-5 sm:px-6 flex">
+        <div className="grow">
+          <h3
+            className="text-lg leading-6 font-medium text-gray-900 cursor-pointer"
+            onClick={handleOpen}
+          >
+            {car.name}
+          </h3>
+          <p className="mt-1 max-w-2xl text-sm text-gray-500">{car.short}</p>
+        </div>
+        <div>
+          <span className="relative z-0 inline-flex shadow-sm rounded-md">
+            <button
+              type="button"
+              className="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-red-400 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+            >
+              Delete
+            </button>
+          </span>
+        </div>
       </div>
       <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
         <dl className="sm:divide-y sm:divide-gray-200">
