@@ -23,7 +23,7 @@ export const List = () => {
   return (
     <div>
       {elements.map((car) => (
-        <ListItem car={car} />
+        <ListItem key={car.id} car={car} />
       ))}
     </div>
   )
